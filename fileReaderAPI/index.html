@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Reader API</title>
+</head>
+<body>
+    <input type="file">
+    <div id="preview"></div>
+</body>
+
+<script>
+
+    const fileInput = document.querySelector('input');
+    const preview = document.getElementById('preview');
+
+    fileInput.addEventListener('change',()=>{
+        const fr = new FileReader();
+        fr.readAsText(fileInput.files[0]);
+
+        fr.addEventListener('load',()=>{
+            preview.textContent=fr.result;
+        })
+
+    })
+
+</script>
+</html>
